@@ -79,7 +79,7 @@ jobs:
     
       # Package the application
       - name: Install Python dependencies
-        run : pip install -r requirements.txt
+ #       run : pip install -r requirements.txt
       #  run: chmod 777 ./mvnw && ./mvnw -B clean package -Dmaven.repo.local=dependencies/repository  -DskipTests --file tomcat-backend-rest/pom.xml
       
       # Delete artifacts
@@ -103,7 +103,7 @@ jobs:
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --buildpack 'gcr.io/paketo-buildpacks/python' --builder paketobuildpacks/builder:base
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --env BP_PIP_VERSION=21.3.1 --buildpack 'gcr.io/paketo-buildpacks/python' --buildpack 'paketo-buildpacks/pip-install' --builder paketobuildpacks/builder:base
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --env BP_PIP_VERSION=21.3.1 --buildpack 'gcr.io/paketo-buildpacks/python' --buildpack 'paketo-buildpacks/python-start' --builder paketobuildpacks/builder:base --path ./src/
-          pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --buildpack 'gcr.io/paketo-buildpacks/python' --builder paketobuildpacks/builder:base --path ./src/
+          pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --buildpack 'gcr.io/paketo-buildpacks/python' --builder paketobuildpacks/builder:base --path ./python/pip/
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --env BP_PIP_VERSION=21.3.1 --buildpack 'gcr.io/paketo-buildpacks/python' --builder paketobuildpacks/builder:base --path ./src/
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --buildpack 'gcr.io/paketo-buildpacks/python' --buildpack 'paketo-buildpacks/python' --builder paketobuildpacks/builder:base --path ./src/
           #pack build ${{ env.ACR_NAME }}.azurecr.io/${{ env.CBS_WEB_IMAGE }}:${{ github.sha }} --env BP_JVM_VERSION=8 --buildpack 'gcr.io/paketo-buildpacks/python' --buildpack 'paketo-buildpacks/python' --builder paketobuildpacks/builder:base --path tomcat-backend-rest/target/*.war
